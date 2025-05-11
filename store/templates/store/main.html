@@ -27,10 +27,10 @@
 </head>
 <body>
  <!--NavBar-->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#fb6161;">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:#fb6161; ">
     <div class="container-fluid align-items-center">
           <a class="navbar-brand" href="#">
-    <img class="logo" src="{% static 'imgs/logo.png' %}" width="300" height=80 alt="">
+    <img class="logo w-100" src="{% static 'imgs/logo.png' %}" style="height: 60px" alt="   ">
   </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -40,21 +40,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-1 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Store</a>
                 </li>
             </ul>
 
             <!--Cart Icon-->
 <div class="dropdown">
   <button
-  class="btn btn-primary dropdown-toggle"
+  class="btn btn-link dropdown-toggle"
   type="button"
   data-mdb-dropdown-init
-  data-mdb-ripple-init
   aria-expanded="false">
-    Login/Sign-up
+    My Account
   </button>
   <div class="dropdown-menu" style="width: 320px">
+      <div>
+          <h1 style= "font-size: 18px; text-align: center; margin: 10px; color: blue">Login to my account</h1>
+          <h1 style="font-size: 15px; text-align: center; margin: 10px;">Enter your e-mail and password:</h1>
+      </div>
     <form class="px-4 py-3">
       <!-- Email input -->
       <div class="form-outline mb-4" data-mdb-input-init>
@@ -88,11 +91,11 @@
       <button type="submit" class="btn btn-primary btn-block" data-mdb-ripple-init>Sign in</button>
     </form>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="{% url 'register' %}">New around here? Sign up</a>
-    <a class="dropdown-item" href="#">Forgot password?</a>
+      <a style="text-align: center" class="dropdown-item" href="{% url 'register' %}">New Customer? <strong>Sign up</strong></a>
+    <a style="text-align: center" class="dropdown-item" href="#">Forgot password?</a>
   </div>
 </div>
-        <div style="background-color: #4f868c; margin-left: 10px " class="vr"></div>
+        <div style="background-color: #131820; margin: 10px; width: 1px; height: 30px;  " class="vr"></div>
                 <a href="{% url 'cart' %}">
                     <img id="cart-icon" src="{% static 'imgs/cart.svg' %}" alt="">
                 </a>
@@ -100,8 +103,6 @@
             <p id="cart-total">0</p>
         </div>
 </nav>
-
-
      {% block content %}
 
      {% endblock content %}
@@ -113,5 +114,7 @@
   type="text/javascript"
   src="https://cdn.jsdelivr.net/npm/mdb-ui-kit@9.0.0/js/mdb.umd.min.js"
 ></script>
+
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

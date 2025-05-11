@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 {#   CourselPictures #}
-<div class="container-fluid mt-3">
+<div>
       <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -14,8 +14,6 @@
     <div class="carousel-inner">
       <div class="carousel-item active c-item">
         <img src="{% static 'imgs/wuwa-promo.webp' %}" class="d-block w-100 c-img" alt="Slide 1">
-        <div class="carousel-caption top-0 mt-4">
-        </div>
       </div>
       <div class="carousel-item c-item">
         <img src="{% static 'imgs/persona-promo.png' %}" class="d-block w-100 c-img" alt="Slide 2">
@@ -24,18 +22,12 @@
       </div>
       <div class="carousel-item c-item">
         <img src="{% static 'imgs/tlou2-promo.jpg' %}" class="d-block w-100 c-img" alt="Slide 3">
-        <div class="carousel-caption top-0 mt-4">
-        </div>
       </div>
           <div class="carousel-item c-item">
-        <img src="{% static 'imgs/persona-5-promo.avif' %}" class="d-block w-100 c-img" alt="Slide 4">
-        <div class="carousel-caption top-0 mt-4">
-        </div>
+        <img src="{% static 'imgs/god3-promo.png' %}" class="d-block w-100 c-img" alt="Slide 4">
       </div>
           <div class="carousel-item c-item">
         <img src="{% static 'imgs/trails-promo.png' %}" class="d-block w-100 c-img" alt="Slide 5">
-        <div class="carousel-caption top-0 mt-4">
-        </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
@@ -47,8 +39,9 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
+<br>
 {#  ProductCard  #}
-<div style="margin-top: 10px" class="container">
+<div class="container">
     <div class="row">
         {% for product in products %}
      <div class="col-lg-4">
@@ -56,14 +49,77 @@
          <div class="box-element product">
              <h6><strong>{{product.name}}</strong></h6>
              <hr>
-             <button class="btn btn-outline-secondary add-btn">Add to cart</button>
-             <a class="btn btn-outline-success" href="#">View</a>
-             <h4 style="display: inline-block; float: right; font-size: 15px; margin: 10px">₱ {{ product.price }}</h4>
+             <button style="background-color: blue"
+                     class="btn btn-success add-btn">Add to cart</button>
+             <a style="background-color: indianred"
+                class="btn btn-primary" href="#">View</a>
+                 <h4 style="display: inline-block; text-align: right; margin-left: 50px; font-size: 20px; color: blue">₱{{product.price}}</h4>
          </div>
      </div>
         {% endfor %}
     </div>
 </div>
+<br>
+<footer class="bg-dark text-white pt-5 pb-4" style="background-color: #0d1263 !important;">
+  <div class="container text-md-left">
+    <div class="row text-md-left">
+
+      <!-- GAMING -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Gaming</h5>
+        <p><a href="#" class="text-white text-decoration-none">Nintendo Switch</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Playstation 5</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Playstation 4</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Xbox Series X</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Xbox One</a></p>
+        <p><a href="#" class="text-white text-decoration-none">PC/Mac</a></p>
+      </div>
+
+      <!-- OTHER OFFERS -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Other Offers</h5>
+        <p><a href="#" class="text-white text-decoration-none">Digital Store</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Collectibles</a></p>
+        <p><a href="#" class="text-white text-decoration-none">More Essentials</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Pre-Orders</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Hot Deals</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Payment Methods</a></p>
+        <p><a href="#" class="text-white text-decoration-none">DB Rewards</a></p>
+      </div>
+
+      <!-- CUSTOMER SERVICE -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Customer Service</h5>
+        <p><a href="#" class="text-white text-decoration-none">Return and Exchange</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Order Cancellation</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Product Warranty</a></p>
+        <p><a href="#" class="text-white text-decoration-none">FAQs</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Store Locations</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Contact Us</a></p>
+      </div>
+
+      <!-- FOLLOW US -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Follow Us</h5>
+        <p><a href="#" class="text-white text-decoration-none">Facebook</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Twitter</a></p>
+        <p><a href="#" class="text-white text-decoration-none">Instagram</a></p>
+      </div>
+
+      <!-- EXPLORE -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Explore</h5>
+        <p><a href="#" class="text-white text-decoration-none">Careers</a></p>
+      </div>
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="row">
+      <div class="col-12 mt-4 text-center">
+        <p class="text-white-50">&copy; 2025 by TemuBlitz. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 {% endblock content %}
-
-
