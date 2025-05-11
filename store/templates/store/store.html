@@ -1,6 +1,54 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+{#   CourselPictures #}
+<div class="container-fluid mt-3">
+      <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="4" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active c-item">
+        <img src="{% static 'imgs/wuwa-promo.webp' %}" class="d-block w-100 c-img" alt="Slide 1">
+        <div class="carousel-caption top-0 mt-4">
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="{% static 'imgs/persona-promo.png' %}" class="d-block w-100 c-img" alt="Slide 2">
+        <div class="carousel-caption top-0 mt-4">
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="{% static 'imgs/tlou2-promo.jpg' %}" class="d-block w-100 c-img" alt="Slide 3">
+        <div class="carousel-caption top-0 mt-4">
+        </div>
+      </div>
+          <div class="carousel-item c-item">
+        <img src="{% static 'imgs/persona-5-promo.avif' %}" class="d-block w-100 c-img" alt="Slide 4">
+        <div class="carousel-caption top-0 mt-4">
+        </div>
+      </div>
+          <div class="carousel-item c-item">
+        <img src="{% static 'imgs/trails-promo.png' %}" class="d-block w-100 c-img" alt="Slide 5">
+        <div class="carousel-caption top-0 mt-4">
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{#  ProductCard  #}
+<div class="container">
     <div class="row">
      <div class="col-lg-4">
          <img class="thumbnail" src="{% static 'imgs/placeholder.gif' %}" alt="">
@@ -32,7 +80,38 @@
              <h4 style="display: inline-block; float: right">$20</h4>
          </div>
      </div>
+     <div class="col-lg-4">
+         <img class="thumbnail" src="{% static 'imgs/placeholder.gif' %}" alt="">
+         <div class="box-element product">
+             <h6><strong>Product</strong></h6>
+             <hr>
+             <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+             <a class="btn btn-outline-success" href="#">View</a>
+             <h4 style="display: inline-block; float: right">$20</h4>
+         </div>
+     </div>
+     <div class="col-lg-4">
+         <img class="thumbnail" src="{% static 'imgs/placeholder.gif' %}" alt="">
+         <div class="box-element product">
+             <h6><strong>Product</strong></h6>
+             <hr>
+             <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+             <a class="btn btn-outline-success" href="#">View</a>
+             <h4 style="display: inline-block; float: right">$20</h4>
+         </div>
+     </div>
+     <div class="col-lg-4">
+         <img class="thumbnail" src="{% static 'imgs/placeholder.gif' %}" alt="">
+         <div class="box-element product">
+             <h6><strong>Product</strong></h6>
+             <hr>
+             <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+             <a class="btn btn-outline-success" href="#">View</a>
+             <h4 style="display: inline-block; float: right">$20</h4>
+         </div>
+     </div>
     </div>
+</div>
 {% endblock content %}
 
 
