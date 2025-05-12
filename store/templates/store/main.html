@@ -45,29 +45,49 @@
             </ul>
 
             <!--Cart Icon-->
+{#  if user is not login    #}
+            {% if user.is_authenticated %}
+<div class="dropdown">
+  <button
+    class="btn btn-link dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-mdb-dropdown-init
+    aria-expanded="false"
+  >
+    <strong>Hello {{user.username}}</strong>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">My Order</a></li>
+    <li><a class="dropdown-item" href="#">My Address</a></li>
+    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+  </ul>
+</div>
+{% else %}
 <div class="dropdown">
   <button
   class="btn btn-link dropdown-toggle"
   type="button"
   data-mdb-dropdown-init
   aria-expanded="false">
-    My Account
+    <strong>My Account</strong>
   </button>
   <div class="dropdown-menu" style="width: 320px">
       <div>
           <h1 style= "font-size: 18px; text-align: center; margin: 10px; color: blue">Login to my account</h1>
           <h1 style="font-size: 15px; text-align: center; margin: 10px;">Enter your e-mail and password:</h1>
       </div>
-    <form class="px-4 py-3">
+    <form method="POST" action="{% url 'store' %}" class="px-4 py-3">
+        {% csrf_token %}
       <!-- Email input -->
       <div class="form-outline mb-4" data-mdb-input-init>
-        <input type="email" id="form2Example1" class="form-control" />
+        <input type="text" name="username" id="form2Example1" class="form-control"/>
         <label class="form-label" for="form2Example1">Email address</label>
       </div>
 
       <!-- Password input -->
       <div class="form-outline mb-4" data-mdb-input-init>
-        <input type="password" id="form2Example2" class="form-control" />
+        <input type="password" name="password" id="form2Example2" class="form-control"/>
         <label class="form-label" for="form2Example2">Password</label>
       </div>
 
@@ -88,13 +108,15 @@
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block" data-mdb-ripple-init>Sign in</button>
+      <button type="submit" class="btn btn-primary btn-block" href="">Sign in</button>
     </form>
     <div class="dropdown-divider"></div>
       <a style="text-align: center" class="dropdown-item" href="{% url 'register' %}">New Customer? <strong>Sign up</strong></a>
     <a style="text-align: center" class="dropdown-item" href="#">Forgot password?</a>
   </div>
 </div>
+    {% endif%}
+{#        CartIcon   #}
         <div style="background-color: #131820; margin: 10px; width: 1px; height: 30px;  " class="vr"></div>
                 <a href="{% url 'cart' %}">
                     <img id="cart-icon" src="{% static 'imgs/cart.svg' %}" alt="">
@@ -102,6 +124,7 @@
             </div>
             <p id="cart-total">0</p>
         </div>
+{#  If user already login#}
 </nav>
      {% block content %}
 

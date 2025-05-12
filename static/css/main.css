@@ -40,9 +40,9 @@ h1,h2,h3,h4,h5,h6{
 	text-align: center;
 	color:#fff;
 	background-color: red;
-	width: 20px;
-	height: 25px;
-	border-radius: 50%;
+	width: 15px;
+	height: 5px;
+	border-radius: 100%;
 	font-size: 14px;
 }
 
