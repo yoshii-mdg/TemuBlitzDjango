@@ -70,11 +70,11 @@
   type="button"
   data-mdb-dropdown-init
   aria-expanded="false">
-    <strong>My Account</strong>
+        <strong>My Account</strong>
   </button>
   <div class="dropdown-menu" style="width: 320px">
       <div>
-          <h1 style= "font-size: 18px; text-align: center; margin: 10px; color: blue">Login to my account</h1>
+          <h1 style= "font-size: 18px; text-align: center; margin: 10px; color: #0d0dfd">Login to my account</h1>
           <h1 style="font-size: 15px; text-align: center; margin: 10px;">Enter your e-mail and password:</h1>
       </div>
     <form method="POST" action="{% url 'store' %}" class="px-4 py-3">
@@ -121,8 +121,9 @@
                 <a href="{% url 'cart' %}">
                     <img id="cart-icon" src="{% static 'imgs/cart.svg' %}" alt="">
                 </a>
+        <p id="cart-total">0</p>
+        <a id="cart-text" href="{% url 'cart' %}">Cart</a>
             </div>
-            <p id="cart-total">0</p>
         </div>
 {#  If user already login#}
 </nav>

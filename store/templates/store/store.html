@@ -40,13 +40,15 @@
     </button>
 </div>
 <br>
+{#New Arrival Card#}
+
 {#  ProductCard  #}
 <div class="container">
     <div class="row">
         {% for product in products %}
-     <div class="col-lg-4">
+            <div class="col-lg-4">
          <img style="object-fit: scale-down" class="thumbnail " src="{{ product.image.url }}" alt="">
-         <div class="box-element product">
+             <div class="box-element product">
              <h6><strong>{{product.name}}</strong></h6>
              <hr>
              <button style="background-color: blue"
@@ -54,8 +56,8 @@
              <a style="background-color: indianred"
                 class="btn btn-primary" href="#">View</a>
                  <h4 style="display: inline-block; text-align: right; margin-left: 50px; font-size: 20px; color: #4848f8">₱{{product.price}}</h4>
-         </div>
-     </div>
+             </div>
+          </div>
         {% endfor %}
     </div>
 </div>
