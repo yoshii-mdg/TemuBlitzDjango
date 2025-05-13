@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import RegisterForm
 # Create your views here.
 def store(request):
     products = Product.objects.all()
@@ -26,8 +27,16 @@ def store(request):
     return render(request, 'store/store.html', context)
 
 def cart(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        # Create empty cart for now for non-logged in user
+        items = []
+    context = {'items': items}
     return render(request, 'store/cart.html', context)
+
 
 def checkout(request):
     context = {}
@@ -52,5 +61,14 @@ def logout_user(request):
     messages.success(request, 'You have been logged out.')
     return redirect('store')
 def register(request):
-    context = {}
-    return  render(request, 'store/register.html', context)
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('store')  # Redirect to the login page after successful registration
+    else:
+        form = RegisterForm()
+
+    return render(request, 'store/register.html', {'form': form})
