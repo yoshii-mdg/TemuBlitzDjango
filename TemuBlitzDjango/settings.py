@@ -24,7 +24,9 @@ SECRET_KEY = 'django-insecure-nqst@lig6#x*=(g=ihv70fr*b%%v%9y%zf53$5_a!-zn)&#d(3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-LOGIN_URL = '/store/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = '/login/'
 ALLOWED_HOSTS = []
 
 # Application definition
