@@ -24,7 +24,7 @@ class Product(models.Model):
 
 # Order placed by the customer (session-based, so no login required)
 class Order(models.Model):
-    customer_name = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=100, )
     email = models.EmailField()
     address = models.TextField()
     date_ordered = models.DateTimeField(auto_now_add=True)
