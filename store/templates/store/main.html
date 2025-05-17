@@ -78,7 +78,6 @@
 {#      Login Form in Navbar #}
     <form method="POST" action="{% url 'login' %}" class="px-4 py-3">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
       <!-- Email input -->
       <div class="form-outline mb-4" data-mdb-input-init>
         <input type="text" name="username" id="form2Example1" class="form-control"/>
@@ -90,6 +89,8 @@
         <input type="password" name="password" id="form2Example2" class="form-control"/>
         <label class="form-label" for="form2Example2">Password</label>
       </div>
+
+        <input type="hidden" name="next" value="{{ request.path }}">
 
       <!-- 2 column grid layout for inline styling -->
       <div class="row mb-4">
@@ -118,11 +119,11 @@
     {% endif%}
 {#        CartIcon   #}
         <div style="background-color: #131820; margin: 10px; width: 1px; height: 30px;  " class="vr"></div>
-                <a href="{% url 'cart' %}">
+                <a href="{% url 'view_cart' %}">
                     <img id="cart-icon" src="{% static 'imgs/cart.svg' %}" alt="">
                 </a>
         <p id="cart-total">0</p>
-        <a id="cart-text" href="{% url 'cart' %}">Cart</a>
+        <a id="cart-text" href="{% url 'view_cart' %}">Cart</a>
             </div>
         </div>
 {#  If user already login#}
