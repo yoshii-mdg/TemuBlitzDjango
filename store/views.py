@@ -35,8 +35,22 @@ def add_to_cart(request, product_id):
 # 🛒 View cart contents
 def view_cart(request):
     cart = request.session.get('cart', {})
-    total = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
-    return render(request, 'store/cart.html', {'cart': cart, 'total': total})
+
+    # Calculate subtotal = sum of (price * quantity)
+    subtotal = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
+
+    shipping_fee = Decimal('50.00')  # fixed shipping fee
+
+    total = subtotal + shipping_fee
+
+    context = {
+        'cart': cart,
+        'subtotal': subtotal,
+        'shipping_fee': shipping_fee,
+        'total': total,
+    }
+
+    return render(request, 'store/cart.html', context)
 
 def remove_from_cart(request, product_id):
     cart = request.session.get('cart', {})
@@ -85,7 +99,6 @@ def checkout(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         address = request.POST.get('address')
-
         order = Order.objects.create(
             customer_name=name,
             email=email,
