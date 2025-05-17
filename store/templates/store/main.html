@@ -44,8 +44,6 @@
                 </li>
             </ul>
 
-            <!--Cart Icon-->
-{#  if user is not login    #}
             {% if user.is_authenticated %}
 <div class="dropdown">
   <button
@@ -77,8 +75,10 @@
           <h1 style= "font-size: 18px; text-align: center; margin: 10px; color: #0d0dfd">Login to my account</h1>
           <h1 style="font-size: 15px; text-align: center; margin: 10px;">Enter your e-mail and password:</h1>
       </div>
-    <form method="POST" class="px-4 py-3">
+{#      Login Form in Navbar #}
+    <form method="POST" action="{% url 'login' %}" class="px-4 py-3">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
       <!-- Email input -->
       <div class="form-outline mb-4" data-mdb-input-init>
         <input type="text" name="username" id="form2Example1" class="form-control"/>

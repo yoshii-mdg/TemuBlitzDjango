@@ -8,23 +8,7 @@ from .forms import RegisterForm
 # Create your views here.
 def store(request):
     products = Product.objects.all()
-    users = User.objects.all()
-    context = {'products': products, 'users': users}
-
-    #Login Function is build in navbar
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect based on user type
-            if user.is_staff:
-                return redirect('/admin/')
-            else:
-                return redirect('store')  # Replace with your desired URL name
-        else:
-            return render(request, 'store/login.html', {'error': 'Invalid credentials'})
+    context = {'products': products}
     return render(request, 'store/store.html', context)
 
 def cart(request):
@@ -53,5 +37,21 @@ def register(request):
 
     return render(request, 'store/register.html', {'form': form})
 
-def login(request):
-    pass
+def login_user(request):
+
+    # Login Function is build in navbar
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        next_url = request.POST.get('next') or request.GET.get('next')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect based on user type
+            if user.is_staff:
+                return redirect('/admin/')
+            else:
+                return redirect('store')  # Replace with your desired URL name
+        else:
+            return render(request, 'store/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'store/store.html')
