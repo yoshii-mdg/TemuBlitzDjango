@@ -14,7 +14,7 @@
 How to run the project
 ```bash
 $ # Install modules - SQLite Storage
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 
 $ # Create tables # 
 $ python manage.py makemigrations
