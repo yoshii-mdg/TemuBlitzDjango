@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Dear {{ name }},</p>
+
+    <p>Thank you for your purchase!</p>
+
+    <p><strong>Order Summary:</strong><br>
+    {% for item in items %}
+        {{ item.product_name }} × {{ item.quantity }} – ₱{{ item.price|floatformat:2 }}<br>
+    {% endfor %}
+    </p>
+
+    <p>Shipping: ₱{{ shipping_fee }}<br>
+    Total: ₱{{ total }}</p>
+
+    <p>We will deliver to:<br>
+    {{ address }}</p>
+
+    <p>Notes:</p>
+
+    <p>If you have questions, contact us at <a href="mailto:temublitz@gmail.com">temublitz@gmail.com</a>.</p>
+
+    <p>Sincerely,<br>
+    Temublitz Team</p>
+</body>
+</html>

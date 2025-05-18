@@ -1,10 +1,14 @@
-from django.views.decorators.csrf import csrf_exempt
+
 from decimal import Decimal
 from django.shortcuts import render, redirect, get_object_or_404
+from TemuBlitzDjango import settings
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm, CheckoutForm
+from .forms import RegisterForm
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
+from .models import OrderItem
 # Create your views here.
 def store(request):
     products = Product.objects.all()
@@ -87,26 +91,25 @@ def clear_cart(request):
 
 
 # ✅ Checkout form
+
 def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
         return redirect('store')
 
     total = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
-
     shipping_fee = Decimal('50.00')
-
-    total = total + shipping_fee
-
-
+    total += shipping_fee
 
     if request.method == 'POST':
         name = request.POST.get('name')
-        email = request.POST.get('email')
+        email_address = request.POST.get('email')  # avoid variable name conflict
         address = request.POST.get('address')
+
+        # Create the order
         order = Order.objects.create(
             customer_name=name,
-            email=email,
+            email=email_address,
             address=address,
             total=total
         )
@@ -119,6 +122,25 @@ def checkout(request):
                 price=item['price']
             )
 
+        # Prepare and send email
+        html_message = render_to_string('store/order_confirmation_message.html', {
+            'name': name,
+            'items': order.items.all(),
+            'shipping_fee': f"{shipping_fee:.2f}",
+            'total': f"{total:.2f}",
+            'address': address,
+        })
+
+        email = EmailMultiAlternatives(
+            subject='Order Confirmation',
+            body='Thank you for your order.',
+            from_email=settings.EMAIL_HOST_USER,
+            to=[email_address]
+        )
+        email.attach_alternative(html_message, "text/html")
+        email.send()
+
+        # Clear cart and show confirmation
         request.session['cart'] = {}
         return render(request, 'store/order_confirmation.html', {'order': order})
 
