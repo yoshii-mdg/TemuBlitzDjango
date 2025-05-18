@@ -41,13 +41,14 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 INSTALLED_APPS = [
     'jazzmin',
-    'django.contrib.admin',
+    'TemuBlitzDjango.apps.CustomAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
+
 ]
 
 MIDDLEWARE = [

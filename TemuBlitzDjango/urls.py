@@ -19,7 +19,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from TemuBlitzDjango.admin import admin_statistics_view
+
 urlpatterns = [
+    path(  # new
+        "admin/statistics/",
+        admin.site.admin_view(admin_statistics_view),
+        name="admin-statistics" ),
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
 ]

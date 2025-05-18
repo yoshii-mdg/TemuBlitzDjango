@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-<h2>📊 Sales Analytics (Last 30 Days)</h2>
-<canvas id="salesChart" width="600" height="300"></canvas>
+<h2>📊 Sales Analytics (Past 30 Days)</h2>
+<canvas id="salesChart" width="400" height="200"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -33,5 +33,5 @@
 </script>
 
 <hr>
-{{ block.super }}  {# this renders the default admin list below #}
+{{ block.super }}
 {% endblock %}
