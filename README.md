@@ -7,7 +7,10 @@
 - Session-Based Ecommerce
 - UI-Ready app, SQLite Database,  Forms validation
 - Design with Bootstrap + Material Bootstrap
-
+- Simple CRUD Operation from add to cart, remove cart, and update cart
+- SMTP Email for sending orders confirmation
+- Custom Admin Dashboard using Jazzmin, and Chart.js for displaying statistics.
+  
 
 
 ## Quick start
