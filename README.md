@@ -1,4 +1,4 @@
-#TemuBlitz - Reyal Gaming Fr Fr 
+#TemuBlitz - Reyal Gaming Fr Fr | Django Simple Project
 
 <br />
 
